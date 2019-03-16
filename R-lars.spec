@@ -4,14 +4,14 @@
 #
 Name     : R-lars
 Version  : 1.2
-Release  : 15
+Release  : 16
 URL      : https://cran.r-project.org/src/contrib/lars_1.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/lars_1.2.tar.gz
 Summary  : Least Angle Regression, Lasso and Forward Stagewise
 Group    : Development/Tools
 License  : GPL-2.0
-Requires: R-lars-lib
-BuildRequires : clr-R-helpers
+Requires: R-lars-lib = %{version}-%{release}
+BuildRequires : buildreq-R
 
 %description
 with the cost of a single least squares fit. Least angle
@@ -34,11 +34,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523312256
+export SOURCE_DATE_EPOCH=1552766138
 
 %install
+export SOURCE_DATE_EPOCH=1552766138
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1523312256
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -73,8 +73,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library lars|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  lars || :
 
 
 %files
@@ -100,11 +99,9 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/lars/help/paths.rds
 /usr/lib64/R/library/lars/html/00Index.html
 /usr/lib64/R/library/lars/html/R.css
-/usr/lib64/R/library/lars/libs/symbols.rds
 /usr/lib64/R/library/lars/ratfor/delcol.r
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/R/library/lars/libs/lars.so
 /usr/lib64/R/library/lars/libs/lars.so.avx2
-/usr/lib64/R/library/lars/libs/lars.so.avx512
