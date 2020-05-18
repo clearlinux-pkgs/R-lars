@@ -4,7 +4,7 @@
 #
 Name     : R-lars
 Version  : 1.2
-Release  : 28
+Release  : 29
 URL      : https://cran.r-project.org/src/contrib/lars_1.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/lars_1.2.tar.gz
 Summary  : Least Angle Regression, Lasso and Forward Stagewise
@@ -12,7 +12,6 @@ Group    : Development/Tools
 License  : GPL-2.0
 Requires: R-lars-lib = %{version}-%{release}
 BuildRequires : buildreq-R
-BuildRequires : util-linux
 
 %description
 with the cost of a single least squares fit. Least angle
@@ -29,21 +28,22 @@ lib components for the R-lars package.
 
 %prep
 %setup -q -c -n lars
+cd %{_builddir}/lars
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571852464
+export SOURCE_DATE_EPOCH=1589825816
 
 %install
-export SOURCE_DATE_EPOCH=1571852464
+export SOURCE_DATE_EPOCH=1589825816
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
