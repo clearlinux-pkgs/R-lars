@@ -4,7 +4,7 @@
 #
 Name     : R-lars
 Version  : 1.2
-Release  : 45
+Release  : 46
 URL      : https://cran.r-project.org/src/contrib/lars_1.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/lars_1.2.tar.gz
 Summary  : Least Angle Regression, Lasso and Forward Stagewise
